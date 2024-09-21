@@ -41,6 +41,8 @@ Il contient les informations nécessaires pour se connecter au cluster, comme le
 
 ````
 
+**Réponse:** <font color="green">Utilisez la commande suivante dans votre terminal : </font> 
+
 ## Impératif Vs Déclaratif
 
 ![alt text](image.png)
