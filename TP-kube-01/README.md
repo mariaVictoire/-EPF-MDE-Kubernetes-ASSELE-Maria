@@ -36,29 +36,22 @@ Il contient les informations nécessaires pour se connecter au cluster, comme le
    kubectl delete pod mynginx
    ```
 
-````
-- En observant le fichier YAML généré pour un Pod, j'ai découvert que chaque ressource Kubernetes contient des propriétés comme `apiVersion`, `kind`, `metadata`, et `spec`. Ces propriétés décrivent la ressource et son comportement.
+🧠 **Réponse:** En observant le fichier YAML généré pour un Pod, j'ai découvert que chaque ressource Kubernetes contient des propriétés comme `apiVersion`, `kind`, `metadata`, et `spec`. Ces propriétés décrivent la ressource et son comportement.
 
-````
-
-**Réponse:** <font color="green">Utilisez la commande suivante dans votre terminal : </font> 
 
 ## Impératif Vs Déclaratif
 
 ![alt text](image.png)
 
 
-````
-Je me suis rendu compte que Kubernetes renvoie une erreur. Cela est dû au fait qu'un pod avec le nom mynginx existe déjà. Avec l'approche impérative, Kubernetes tente de créer immédiatement une nouvelle ressource avec le nom donné. Comme chaque nom de pod doit être unique dans un même namespace, la duplication échoue. Cela m'a fait comprendre qu'avec l'impératif, il n'y a pas de gestion intelligente des doublons ou de mise à jour d'une ressource existante.
+🧠 **Réponse:** Je me suis rendu compte que Kubernetes renvoie une erreur. Cela est dû au fait qu'un pod avec le nom mynginx existe déjà. Avec l'approche impérative, Kubernetes tente de créer immédiatement une nouvelle ressource avec le nom donné. Comme chaque nom de pod doit être unique dans un même namespace, la duplication échoue. Cela m'a fait comprendre qu'avec l'impératif, il n'y a pas de gestion intelligente des doublons ou de mise à jour d'une ressource existante.
 
-````
 
 ![alt text](image-1.png)
 
 
-````
-J'ai constaté que Kubernetes ne renvoie pas d'erreur comme avec l'impératif. Au lieu de cela, il vérifie si le pod existe déjà et applique seulement les modifications nécessaires, s'il y en a. S'il n'y a aucune différence entre l'état actuel et celui que j'ai décrit dans le fichier YAML, Kubernetes ne fait rien. J'ai vraiment apprécié cette approche car elle permet de décrire l'état voulu et de laisser Kubernetes gérer les changements sans risquer d'écraser ou de dupliquer les ressources.
-````
+🧠 **Réponse:** J'ai constaté que Kubernetes ne renvoie pas d'erreur comme avec l'impératif. Au lieu de cela, il vérifie si le pod existe déjà et applique seulement les modifications nécessaires, s'il y en a. S'il n'y a aucune différence entre l'état actuel et celui que j'ai décrit dans le fichier YAML, Kubernetes ne fait rien. J'ai vraiment apprécié cette approche car elle permet de décrire l'état voulu et de laisser Kubernetes gérer les changements sans risquer d'écraser ou de dupliquer les ressources.
+
 
 ## ReplicaSets et Deployments
 
