@@ -56,28 +56,21 @@ Il contient les informations nécessaires pour se connecter au cluster, comme le
 ## ReplicaSets et Deployments
 
 ### Scaler les Pods avec un ReplicaSet
-- Pour garantir la haute disponibilité, j'ai utilisé un ReplicaSet qui permet de gérer plusieurs instances d'un même Pod. Voici un exemple de fichier YAML pour un ReplicaSet :
-   ```yaml
-   apiVersion: apps/v1
-   kind: ReplicaSet
-   metadata:
-     name: mynginx-replicaset
-   spec:
-     replicas: 3
-     selector:
-       matchLabels:
-         app: nginx
-     template:
-       metadata:
-         labels:
-           app: nginx
-       spec:
-         containers:
-         - name: nginx
-           image: nginx
-   ```
+- Pour garantir la haute disponibilité, j'ai utilisé un ReplicaSet qui permet de gérer plusieurs instances d'un même Pod.
+🧠 **Réponse:** La propriété selector: matchLabels est utilisée pour faire correspondre les pods avec le label app: unicorn-front. Cela signifie que le ReplicaSet gère uniquement les pods qui ont ce label spécifique.
 
-- Ce fichier définit trois réplicas de `nginx` pour assurer la disponibilité de l'application.
+![alt text](image-2.png)
+
+
+🧠 **Réponse:** Après le déploiement du ReplicaSet, il y a 3 pods déployés dans le namespace, conformément à la configuration replicas: 3 dans le fichier YAML.
+
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+🧠 **Réponses:** Lorsque je supprime un pod, le ReplicaSet détecte qu'il manque un pod et en crée immédiatement un nouveau pour maintenir le nombre spécifié de répliques. Et, en supprimant le ReplicaSet, les pods qu'il gérait sont également supprimés, car il ne reste plus d'objet pour les superviser et maintenir leur état.
+
 
 ### Gestion des Versions avec un Deployment
 - J'ai ensuite utilisé un `Deployment` pour gérer les réplicas et les versions des Pods. Le Deployment permet de mettre à jour les Pods sans interruption de service grâce à un processus de **RollingUpdate**. Le fichier YAML d’un Deployment est similaire à celui d’un ReplicaSet, mais inclut des stratégies de déploiement :
