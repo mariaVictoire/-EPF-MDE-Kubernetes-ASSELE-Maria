@@ -92,18 +92,18 @@ Il contient les informations nécessaires pour se connecter au cluster, comme le
 - Ce Service de type `ClusterIP` permet à d'autres applications dans le cluster de communiquer avec `nginx`.
 
 ### Utilisation d'un Ingress
-- Pour exposer mes Pods au-delà du cluster (par exemple, sur Internet), j'ai utilisé un **Ingress** qui agit comme un reverse proxy :
+- Pour exposer mes Pods au-delà du cluster (par exemple, sur Internet), j'ai utilisé un **Ingress** qui agit comme un reverse proxy.
 
 
 
 ## Gestion des ConfigMaps et Secrets
 
 ### ConfigMap
-- J'ai utilisé un ConfigMap pour gérer des configurations sous forme de variables d'environnement dans mes Pods, par exemple pour personnaliser la couleur de fond d'une application web :
+- J'ai utilisé un ConfigMap pour gérer des configurations sous forme de variables d'environnement dans mes Pods, par exemple pour personnaliser la couleur de fond d'une application web.
 
 
 ### Secret
-- Les **Secrets** permettent de gérer des données sensibles, comme les identifiants pour les accès à un registry privé :
+- Les **Secrets** permettent de gérer des données sensibles, comme les identifiants pour les accès à un registry privé.
 
 
 
