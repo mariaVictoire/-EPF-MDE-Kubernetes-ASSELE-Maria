@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pg-config
+data:
+  POSTGRES_DB: "cdb"
+  db_path: "/var/lib/postgresql/data/pgdata"

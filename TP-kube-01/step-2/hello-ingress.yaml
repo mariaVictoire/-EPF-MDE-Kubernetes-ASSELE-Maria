@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: lamimi.maria-asseletsetse.epf.takima.school
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+      - lamimi.maria-asseletsetse.epf.takima.school
+      secretName: app-wildcard

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kibana-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: kibana.maria-asseletsetse.epf.takima.school
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kibana-kb-http  
+                port:
+                  number: 5601        
+
+  tls:
+  - hosts:
+    - kibana.maria-asseletsetse.epf.takima.school       
+    secretName: app-wildcard

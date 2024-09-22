@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unicorn-front-deployment
+  labels:
+    app: unicorn-front
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: unicorn-front
+  template:
+    metadata:
+      labels:
+        app: unicorn-front
+    spec:
+      containers:
+      - name: unicorn-front
+        image: registry.takima.io/school/proxy/nginx:1.7.9
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "400m"
