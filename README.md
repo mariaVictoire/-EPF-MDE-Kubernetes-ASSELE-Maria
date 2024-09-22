@@ -1,4 +1,4 @@
-# Kubernetes Training
+# Formation Kubernetes
 
 Bienvenue dans mon dépôt Git qui regroupe les travaux pratiques réalisés dans le cadre de ma formation sur Kubernetes. Ce document présente une vue d'ensemble des trois TPs, ainsi que leur objectif, leur structure, et les étapes clés de chaque exercice.
 
@@ -22,6 +22,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
 
    * Extrait du resultat final
 
+![alt text](illustrations/image.png)
 
 
 3. **Day 3 - GitOps**  
@@ -30,6 +31,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
 
    * Extrait du resultat final
 
+ ![alt text](illustrations/image_sync.png)
 
 
 ## Comment utiliser ce dépôt
