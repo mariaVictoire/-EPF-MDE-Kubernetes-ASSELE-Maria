@@ -19,6 +19,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
 
 
 
+
 2. **Day 2 - Deep Dive (TP-kube-02)**  
     
    Ce TP va plus loin dans l'utilisation de Kubernetes avec un focus sur les opérateurs et les Custom Resources Definitions (CRD). J'ai également manipulé des concepts tels que les StatefulSets et l’intégration d'outils de monitoring. En plus de cela, j'ai mis en œuvre un déploiement complet en architecture trois tiers. Cette approche comprenait les éléments suivants :
@@ -37,6 +38,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
    * Extrait d'un resultat
 
 ![alt text](illustrations/image.png)
+
 
 
 3. **Day 3 - GitOps (TP-kube-03)**  
