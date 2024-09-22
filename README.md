@@ -13,14 +13,27 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
    **Objectif :**  
    Ce premier TP est une introduction à Kubernetes. Il m’a permis de comprendre les bases de Kubernetes, comme l'installation et l'utilisation de `kubectl`, ainsi que la gestion des premières ressources (Pods, Deployments, Services).  
 
-   * Extrait du resultat final
+   * Extrait d'un resultat
 
+    ![alt text](TP-kube-02/screenshots/image.png)
+    
 
 2. **Day 2 - Deep Dive**  
    **Objectif :**  
-   Ce TP va plus loin dans l'utilisation de Kubernetes avec un focus sur les opérateurs et les Custom Resources Definitions (CRD). J'ai également manipulé des concepts tels que les StatefulSets et l’intégration d'outils de monitoring.  
+   Ce TP va plus loin dans l'utilisation de Kubernetes avec un focus sur les opérateurs et les Custom Resources Definitions (CRD). J'ai également manipulé des concepts tels que les StatefulSets et l’intégration d'outils de monitoring. En plus de cela, j'ai mis en œuvre un déploiement complet en architecture trois tiers. Cette approche comprenait les éléments suivants :
 
-   * Extrait du resultat final
+    Le front :
+    Il s'agit d'une application web (hébergée dans un conteneur Nginx), accessible via un service exposé à l'extérieur du cluster Kubernetes. Ce service gère les requêtes des utilisateurs et transmet ces demandes à l'API. J'ai configuré un fichier front-config.yaml pour gérer les variables nécessaires, comme l'URL de l'API, et j'ai aussi créé un front-deployment.yaml pour gérer le déploiement du frontend.
+
+    L'API :
+    C'est l'élément central de la logique applicative. Mon API était basée sur Spring Boot, et je l'ai déployé via un api-deployment.yaml. L'API est exposée via un Ingress qui permet d'accéder à ses endpoints depuis le frontend.
+
+    La base de données :
+    Pour gérer la persistance des données, j'ai déployé une base de données Postgres en utilisant un StatefulSet et un volume persistant. Cela a assuré que même si le Pod Postgres est redémarré, les données ajoutées par l'API (comme les enregistrements ajoutés depuis le frontend) sont conservées grâce au PVC (Persistent Volume Claim).
+
+    Ces trois composants (Front, API et Base de données) communiquent entre eux via des services Kubernetes internes. Pour chaque service, j'ai créé les fichiers de configuration nécessaires pour les exposer, les déployer et garantir leur bonne communication dans le cluster Kubernetes​
+
+   * Extrait d'un resultat
 
 ![alt text](illustrations/image.png)
 
@@ -29,7 +42,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
    **Objectif :**  
    Ce dernier TP porte sur l'implémentation de GitOps avec ArgoCD et Helm. J’ai appris à automatiser le déploiement continu en utilisant Git comme source de vérité pour l'état du cluster Kubernetes.  
 
-   * Extrait du resultat final
+   * Extrait d'un resultat
 
  ![alt text](illustrations/image_sync.png)
 
