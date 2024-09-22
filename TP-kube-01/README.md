@@ -72,97 +72,42 @@ Il contient les informations nécessaires pour se connecter au cluster, comme le
 🧠 **Réponses:** Lorsque je supprime un pod, le ReplicaSet détecte qu'il manque un pod et en crée immédiatement un nouveau pour maintenir le nombre spécifié de répliques. Et, en supprimant le ReplicaSet, les pods qu'il gérait sont également supprimés, car il ne reste plus d'objet pour les superviser et maintenir leur état.
 
 
-### Gestion des Versions avec un Deployment
-- J'ai ensuite utilisé un `Deployment` pour gérer les réplicas et les versions des Pods. Le Deployment permet de mettre à jour les Pods sans interruption de service grâce à un processus de **RollingUpdate**. Le fichier YAML d’un Deployment est similaire à celui d’un ReplicaSet, mais inclut des stratégies de déploiement :
-   ```yaml
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     name: mynginx-deployment
-   spec:
-     replicas: 3
-     strategy:
-       type: RollingUpdate
-     template:
-       metadata:
-         labels:
-           app: nginx
-       spec:
-         containers:
-         - name: nginx
-           image: nginx:1.7.9
-   ```
+###  Deployment
+- J'ai ensuite utilisé un `Deployment` pour gérer les réplicas et les versions des Pods. Le Deployment permet de mettre à jour les Pods sans interruption de service grâce à un processus de **RollingUpdate**. Le fichier YAML d’un Deployment est similaire à celui d’un ReplicaSet, mais inclut des stratégies de déploiement.
+
+
+### Faire un Rollback
+
+### Mettre à l'échelle
+
+
+## Bonus
 
 ## Publication des Services
 
 ### Exposition des Pods avec un Service
 - Un **Service** dans Kubernetes agit comme un load balancer interne qui distribue le trafic aux Pods. J'ai créé un Service pour exposer mes Pods Nginx sur le port 80 :
-   ```yaml
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: mynginx-service
-   spec:
-     selector:
-       app: nginx
-     ports:
-     - protocol: TCP
-       port: 80
-       targetPort: 80
-   ```
+
 
 - Ce Service de type `ClusterIP` permet à d'autres applications dans le cluster de communiquer avec `nginx`.
 
 ### Utilisation d'un Ingress
 - Pour exposer mes Pods au-delà du cluster (par exemple, sur Internet), j'ai utilisé un **Ingress** qui agit comme un reverse proxy :
-   ```yaml
-   apiVersion: networking.k8s.io/v1
-   kind: Ingress
-   metadata:
-     name: mynginx-ingress
-   spec:
-     rules:
-     - host: myapp.namespace.example.com
-       http:
-         paths:
-         - path: /
-           pathType: Prefix
-           backend:
-             service:
-               name: mynginx-service
-               port:
-                 number: 80
-   ```
+
+
 
 ## Gestion des ConfigMaps et Secrets
 
 ### ConfigMap
 - J'ai utilisé un ConfigMap pour gérer des configurations sous forme de variables d'environnement dans mes Pods, par exemple pour personnaliser la couleur de fond d'une application web :
-   ```yaml
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: app-config
-   data:
-     background_color: "#FFFFFF"
-   ```
+
 
 ### Secret
 - Les **Secrets** permettent de gérer des données sensibles, comme les identifiants pour les accès à un registry privé :
-   ```yaml
-   apiVersion: v1
-   kind: Secret
-   metadata:
-     name: my-secret
-   data:
-     username: <base64_encoded_value>
-     password: <base64_encoded_value>
-   ```
+
+
 
 ## Conclusion
 
-Ce TP m'a permis de mieux comprendre les concepts essentiels de Kubernetes, tels que la gestion des Pods, des ReplicaSets, des Deployments, des Services et des Ingress. J'ai également appris à utiliser des outils comme `kubectl` et Lens pour administrer et observer mes ressources. Kubernetes facilite le déploiement et la scalabilité des applications tout en garantissant la haute disponibilité et la résilience grâce à ses mécanismes de rolling updates et d'auto-scaling.
+Ce TP m'a permis de mieux comprendre les concepts essentiels de Kubernetes, tels que la gestion des Pods, des ReplicaSets, des Deployments, des Services et des Ingress. J'ai également appris à utiliser des outils comme `kubectl` pour gerer mes ressources. Kubernetes facilite le déploiement et la scalabilité des applications tout en garantissant la haute disponibilité et la résilience grâce à ses mécanismes de rolling updates et d'auto-scaling.
 
---- 
-
-Cet exemple de README peut être modifié en fonction de vos propres expérimentations et de la structure exacte du TP que vous avez suivi.
