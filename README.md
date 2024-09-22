@@ -9,8 +9,8 @@ Ce dépôt contient les trois TP axés sur la découverte, l’approfondissement
 ## Contenu du dépôt
 Le dépôt est structuré de manière à séparer chaque TP dans son propre répertoire. Voici un aperçu de ce que vous trouverez :
 
-1. **Day 1 - Discovery**  
-   **Objectif :**  
+1. **Day 1 - Discovery (TP-kube-01)**  
+     
    Ce premier TP est une introduction à Kubernetes. Il m’a permis de comprendre les bases de Kubernetes, comme l'installation et l'utilisation de `kubectl`, ainsi que la gestion des premières ressources (Pods, Deployments, Services).  
 
    * Extrait d'un resultat
@@ -18,8 +18,9 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
     ![alt text](TP-kube-02/screenshots/image.png)
 
 
-2. **Day 2 - Deep Dive**  
-   **Objectif :**  
+
+2. **Day 2 - Deep Dive (TP-kube-02)**  
+    
    Ce TP va plus loin dans l'utilisation de Kubernetes avec un focus sur les opérateurs et les Custom Resources Definitions (CRD). J'ai également manipulé des concepts tels que les StatefulSets et l’intégration d'outils de monitoring. En plus de cela, j'ai mis en œuvre un déploiement complet en architecture trois tiers. Cette approche comprenait les éléments suivants :
 
     Le front :
@@ -38,13 +39,14 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
 ![alt text](illustrations/image.png)
 
 
-3. **Day 3 - GitOps**  
-   **Objectif :**  
+3. **Day 3 - GitOps (TP-kube-03)**  
+   
    Ce dernier TP porte sur l'implémentation de GitOps avec ArgoCD et Helm. J’ai appris à automatiser le déploiement continu en utilisant Git comme source de vérité pour l'état du cluster Kubernetes.  
 
    * Extrait d'un resultat
 
- ![alt text](illustrations/image.png)
+ ![alt text](illustrations/image_n.png)
+
 
 
 ## Comment utiliser ce dépôt
