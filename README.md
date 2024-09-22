@@ -16,7 +16,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
    * Extrait d'un resultat
 
     ![alt text](TP-kube-02/screenshots/image.png)
-    
+
 
 2. **Day 2 - Deep Dive**  
    **Objectif :**  
@@ -44,7 +44,7 @@ Le dépôt est structuré de manière à séparer chaque TP dans son propre rép
 
    * Extrait d'un resultat
 
- ![alt text](illustrations/image_sync.png)
+ ![alt text](illustrations/image.png)
 
 
 ## Comment utiliser ce dépôt
