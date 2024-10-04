@@ -75,10 +75,35 @@ Il contient les informations nécessaires pour se connecter au cluster, comme le
 ###  Deployment
 - J'ai ensuite utilisé un `Deployment` pour gérer les réplicas et les versions des Pods. Le Deployment permet de mettre à jour les Pods sans interruption de service grâce à un processus de **RollingUpdate**. Le fichier YAML d’un Deployment est similaire à celui d’un ReplicaSet, mais inclut des stratégies de déploiement.
 
+🧠 **Réponses:** Le Deployment gère le cycle de vie des Pods, facilite les RollingUpdates pour les mises à jour sans interruption, et permet des Rollbacks plus facilement. Il crée automatiquement des ReplicaSets lors des déploiements.
+
+🧠 **Réponses:** Le nombre de ReplicaSets dépend du nombre de versions déployées (au moins 1 pour chaque version déployée). Le nombre de Pods est défini par le paramètre replicas dans le Deployment, ici il est de 3 Pods actifs.
+
+
+🧠 **Réponses:** Après le RollingUpgrade, il y aura deux ReplicaSets : un pour l'ancienne version et un pour la nouvelle. Cependant, seul le ReplicaSet correspondant à la nouvelle version aura des Pods actifs, généralement le nombre spécifié dans replicas (ex : 3 Pods).
+
+🧠 **Réponses:** Les logs montrent les étapes de mise à jour des Pods, comme la suppression des anciens Pods et le démarrage des nouveaux avec la nouvelle image. Si tout se passe bien, les nouveaux Pods passent au statut Running et l'ancienne version est progressivement déclassée.
+
 
 ### Faire un Rollback
 
+🧠 **Réponses:** Les nouveaux Pods ne démarrent pas car l'image nginx:1.91-falseimage est incorrecte ou n'existe pas. Kubernetes attendra le déploiement des Pods mais ceux-ci resteront en échec.
+
+
+🧠 **Réponses:** Il y aura deux révisions : la révision précédente (version stable) et la nouvelle tentative échouée avec l'image incorrecte.
+
+🧠 **Réponses:** Le champ CHANGE-CAUSE enregistre la raison ou le détail du changement effectué, par exemple le changement d'image lors du déploiement.
+
+
 ### Mettre à l'échelle
+
+🧠 **Réponses:** Après avoir scalé le déploiement à 5 réplicas, il y aura 5 Pods en cours d'exécution pour l'application nginx.
+
+### Mettre en standby un deployment
+
+🧠 **Réponses:** Lorsqu'on met un Deployment en pause, le ReplicaSet ne change pas. Aucun nouveau Pod n'est créé ou supprimé tant que le déploiement reste en pause.
+
+🧠 **Réponses:** Lorsqu'on reprend le Deployment, les mises à jour (comme le changement d'image) sont appliquées et le ReplicaSet commencera à déployer les nouveaux Pods en fonction des modifications.
 
 
 ## Bonus
